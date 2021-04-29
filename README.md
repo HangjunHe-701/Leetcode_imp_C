@@ -7,7 +7,7 @@ Leetcode implementation on C
 	leetcode_0011_max_area.c
 	leetcode_0015_three_sum.c
 	leetcode_0016_three_sum_closest.c
-X:	leetcode_0018_four_sum.c
+	leetcode_0018_four_sum.c				: not ready
 	leetcode_0026_remove_duplicates.c
 		27, 80, 283
 	leetcode_0031_next_permutation.c
@@ -33,10 +33,10 @@ X:	leetcode_0018_four_sum.c
 	leetcode_0073_set_zeroes.c
 	leetcode_0074_search_matrix.c			: binary search
 	leetcode_0075_sort_colors.c	
-?	leetcode_0078_subsets.c					: bitops, recursive
+	leetcode_0078_subsets.c					: ?, bitops, recursive
 		90
 	leetcode_0079_word_search.c				: maze, recursive
-?	leetcode_0084_max_rectangle_area.c
+	leetcode_0084_max_rectangle_area.c		: ?
 
 # Binary search: (binary_search.c)
 
@@ -73,7 +73,6 @@ X:	leetcode_0018_four_sum.c
 		567
 	leetcode_0856_score_parentheses.c
 	leetcode_0916_word_subsets.c
-	// 1000 up not start yet
 
 # LINKED LIST:
 
@@ -100,7 +99,7 @@ X:	leetcode_0018_four_sum.c
 	leetcode_0739_daily_temperatures.c
 		503, 496, 1019 
 	leetcode_0817_list_components.c
-X:	leetcode_1171_zero_sum_sublist.c
+	leetcode_1171_zero_sum_sublist.c		: not ready
 	leetcode_1290_convert_binary_to_integar.c
 	leetcode_1669_merge_between.c
 	leetcode_1721_swap_nodes.c
@@ -119,7 +118,7 @@ X:	leetcode_1171_zero_sum_sublist.c
 	leetcode_0371_get_sum.c					: recursive
 	leetcode_0393_valid_UTF8.c
 	leetcode_0397_integar_replace.c
-X:	leetcode_0401_binary_watch.c
+	leetcode_0401_binary_watch.c			: not ready
 	leetcode_0405_to_hex.c
 	leetcode_0477_total_hamming_distance.c
 	leetcode_0762_count_prime_setBits.c
@@ -131,6 +130,6 @@ X:	leetcode_0401_binary_watch.c
 
 	leetcode_binary_tree.c:
 		094, 100, 102, 105, 106, 226
-X:	leetcode_0095_generate_trees.c
+	leetcode_0095_generate_trees.c			: not ready
 	leetcode_0096_num_trees.c
 	leetcode_0098_valid_bst.c
