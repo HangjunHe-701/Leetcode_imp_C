@@ -4,6 +4,22 @@
 #include <stdlib.h>
 #include "misc.h" 
 
+static bool searchMatrix2(int nums[][4], int m, int n, int target)
+{
+	int row = m - 1, column = 0;
+
+	while (row >= 0 && column < n) {
+		if (nums[row][column] == target)
+			return true;
+
+		if (nums[row][column] > target)
+			row--;
+		else
+			column++;
+	}
+
+	return false;
+}
 
 static bool searchMatrix(int nums[][4], int m, int n, int target)
 {
@@ -55,8 +71,9 @@ int main(int argc, char **argv)
 	int array[][4] = {{1,3,5,7},{10,11,16,20},{23,30,34,50}};
 	int m = 3;
 	int n = 4;
-	int k = 11;
+	int k = 13;
 	printf("search %d in matrix %d\n", k, searchMatrix(array, m, n, k));
+	printf("search %d in matrix better %d\n", k, searchMatrix2(array, m, n, k));
 
 	return 0;
 }
