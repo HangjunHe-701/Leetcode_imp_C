@@ -19,6 +19,7 @@ static bool getWordSearch(char **mz, int m, int n, int x, int y, char * word, in
 	}
 
 	if (mz[x][y] == word[index]) {
+
 		visited[x][y] = true;
 		for (int i = 0; i < 4; i++) {
 			nx = x + nDir[i][0];
@@ -27,12 +28,13 @@ static bool getWordSearch(char **mz, int m, int n, int x, int y, char * word, in
 				return true;
 			}
 		}
-		// clear
+		// clear. index not increased yet.
 		visited[x][y] = false;
 	}
 	return false;
 }
 
+// Offer 12
 static bool wordSearch(char **mz, int m, int n, char * word)
 {
 	int i,j;
@@ -43,6 +45,7 @@ static bool wordSearch(char **mz, int m, int n, char * word)
 		visited[i] = malloc(n);
 		memset(visited[i], 0, n);
 	}
+
 	// start point
 	for (i = 0; i < m; i++) {
 		for (j = 0; j < n; j++) {

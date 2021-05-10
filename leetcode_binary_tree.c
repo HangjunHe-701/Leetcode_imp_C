@@ -118,6 +118,47 @@ btree_t * leetcode106_buildInPost2Tree(int* pPostOrder, int* pInOrder, int nodeN
 	return result;
 }
 
+
+static btree_t * buildInPost2TreeDFS2(int* pPostStart, int* pPostEnd, int* pInStart, int *pInEnd)
+{
+	// post end is the root
+	btree_t * root = malloc (sizeof(btree_t));
+	root->data = *pPostEnd;
+	root->pleft = root->pright = NULL;
+
+	if (pPostEnd == pPostStart)
+		return root;
+
+	// the index of inOrder
+	int * pInOrder = pInStart;
+	while (pInOrder <= pInEnd && *pInOrder != *pPostEnd)
+		pInOrder++;
+
+	if (pInOrder == pInEnd && *pInOrder != *pPostEnd)
+		return NULL; // not found, exception
+
+	int leftLen = pInOrder - pInStart;
+
+	if (leftLen > 0) {
+		root->pleft = buildInPost2TreeDFS2(pPostStart, pPostStart+leftLen-1, pInStart, pInOrder-1);
+	}
+	if (leftLen < pPostEnd-pPostStart) {
+		root->pright = buildInPost2TreeDFS2(pPostStart+leftLen, pPostEnd-1, pInOrder+1, pInEnd); 
+	}
+
+	return root;
+}
+btree_t * leetcode106_buildInPost2Tree2(int* pPostOrder, int* pInOrder, int nodeNum)
+{
+	int i;
+	int *inPos;
+	int max = 0;
+	btree_t *result;
+
+	result = buildInPost2TreeDFS2(pPostOrder, pPostOrder+nodeNum-1, pInOrder, pInOrder+nodeNum-1);
+	return result;
+}
+
 // BFS
 void leetcode102_levelOrder(btree_t * pRoot)
 {
@@ -213,10 +254,10 @@ bool leetcode101_isSymmetric(btree_t *root)
 
 }
 
-#if 0
+#if 1
 int main ()
 {
-	btree_t * ret, *ret2;
+	btree_t * ret, *ret2, *ret3, *ret4;
 	
 	/*
 	 *             1
@@ -252,22 +293,32 @@ int main ()
 	postOrder_destroy(ret2);
 
 	// post-order and in-order -> a tree 
-	ret2 = leetcode106_buildInPost2Tree(post, ino, 7); 
-	printf ("post order: \n");
-	postOrder_traverse(ret);
+	ret3 = leetcode106_buildInPost2Tree(post, ino, 7); 
+	printf ("\nbuild in-post preorder: \n");
+	preOrder_traverse(ret3);
+
+	// 2nd: post-order and in-order -> a tree 
+	ret4 = leetcode106_buildInPost2Tree2(post, ino, 7); 
+	printf ("\nbuild in-post preorder 2nd: \n");
+	preOrder_traverse(ret4);
+
 	printf ("\n BFS level:\n");
 	leetcode102_levelOrder(ret);
 	//printf ("\n DFS level:\n");
 	//leetcode102_levelOrder2(ret);
 	printf ("\n");
+
 	printf ("isSametree %d\n", leetcode100_isSameTree(ret, ret2));
 	printf ("\npost order: \n");
 	leetcode226_invertTree(ret);
 	postOrder_traverse(ret);
 	printf ("\nisSametree two rets %d\n", leetcode100_isSameTree(ret, ret2));
 	printf ("\nisSymmetric %d\n", leetcode101_isSymmetric(ret));
+
 	postOrder_destroy(ret);
 	postOrder_destroy(ret2);
+	postOrder_destroy(ret3);
+	postOrder_destroy(ret4);
 	
 	return 0;
 }

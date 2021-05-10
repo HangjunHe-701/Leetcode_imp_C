@@ -23,7 +23,7 @@ Leetcode implementation on C
 	leetcode_0048_rotate_image.c
 	leetcode_0053_max_sub_array.c
 	leetcode_0054_spiral_order.c
-	leetcode_0056_merge_intevals.c
+	leetcode_0056_merge_intevals.c			: quick sort
 		57
 	leetcode_0059_spiral_matrix.c
 	leetcode_0062_unique_paths.c			: recursive, DP
@@ -64,7 +64,7 @@ Leetcode implementation on C
 	leetcode_0151_reverse_words.c
 		557
 	leetcode_0227_basic_calculator.c
-	leetcode_0306_is_additive_number.c:w
+	leetcode_0306_is_additive_number.c		: fibonacci
 		842	
 	leetcode_0344_reverse_string.c
 		345, 541

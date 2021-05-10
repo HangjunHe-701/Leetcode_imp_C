@@ -4,6 +4,23 @@
 #include <stdlib.h>
 #include "misc.h" 
 
+static bool searchMatrix3(int *nums, int m, int n, int target)
+{
+	int row = m - 1, column = 0;
+
+	while (row >= 0 && column < n) {
+		if (nums[row*n+column] == target)
+			return true;
+
+		if (nums[row*n+column] > target)
+			row--;
+		else
+			column++;
+	}
+
+	return false;
+}
+
 static bool searchMatrix2(int nums[][4], int m, int n, int target)
 {
 	int row = m - 1, column = 0;
@@ -73,7 +90,8 @@ int main(int argc, char **argv)
 	int n = 4;
 	int k = 13;
 	printf("search %d in matrix %d\n", k, searchMatrix(array, m, n, k));
-	printf("search %d in matrix better %d\n", k, searchMatrix2(array, m, n, k));
+	printf("search %d in matrix2 better %d\n", k, searchMatrix2(array, m, n, k));
+	printf("search %d in matrix3 better %d\n", k, searchMatrix3((int*)array, m, n, k));
 
 	return 0;
 }

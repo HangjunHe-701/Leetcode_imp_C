@@ -64,10 +64,13 @@ int main(int argc, char **argv)
     l1 = CreateList(6);
     ShowList(l1);
     ShowList(l2);
-	ret = leetcode21_mergeTwoLinks(l1, l2);
+#if 1
+	ret = mergeTwoLinks(l1, l2);
 	ShowList(ret);
 	free_list(ret);	
-	//ret = mergeTwoLinks2(l1, l2);
-	//ShowList(ret);
-	//free_list(ret);	
+#else
+	ret = mergeTwoLinks2(l1, l2);
+	ShowList(ret);
+	free_list(ret);	
+#endif
 }

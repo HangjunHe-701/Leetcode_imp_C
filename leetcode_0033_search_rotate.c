@@ -78,13 +78,43 @@ bool leetcode81_searchRotate(int* nums, int n, int k)
 	return false;
 }
 
+// Offer 11: search min in a rotated sorted array
+int offer11_searchMin(int nums[], int n)
+{
+	unsigned int low = 0, high = n-1;
+	unsigned int mid;
+
+	// not rotated
+	if (nums[low] <= nums[high])
+		return nums[low];
+
+	while (nums[low] >= nums[high]) {
+
+		if (high - low == 1)
+			return nums[high];
+		
+		mid = low + (high-low)/2;
+
+		if (nums[mid] >= nums[low]) { // mid在数值大的一部分区间里
+				low = mid;
+		} else if (nums[mid] <= nums[high]) { // mid在数值小的一部分区间里
+				high = mid;
+		} 
+	}
+
+	return -1;
+}
+
 int main(int argc, char **argv)
 {
-	int array[] = {3, 4, 7, 8, 9, 0, 1, 2};
+	int array[] = {3, 4, 7, 8, 9, 10, 1, 2};
 	int n = 7;
 
 	int ret = search33(array, 8, n);
 	printf ("%d target index is %d\n", n, ret);
 
 	printf ("%d has %d\n", n, leetcode81_searchRotate(array, 8, 5));
+
+	ret = offer11_searchMin(array, 8);
+	printf ("min is %d\n", ret);
 }
