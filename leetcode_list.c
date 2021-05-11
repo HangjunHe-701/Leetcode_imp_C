@@ -2,7 +2,7 @@
  #include <stdio.h>
  #include "single_list.h" 
 
-// recursive
+// Offer 21, recursive
 Node *leetcode21_mergeTwoLinks(Node *l1, Node *l2)
 {
 	if (l1 == NULL) return l2;
@@ -31,6 +31,7 @@ bool leetcode141_hasCycle(Node * head)
  	return false;
 }
 
+// Offer 23
 Node * leetcode142_hasCycle2(Node * head) 
 {
 	Node * slow = head, *fast = head;

@@ -8,8 +8,11 @@
 
 Node * deleteDuplicate2(Node *list)
 {
+	Node head;
 	Node *t = list, *prev = NULL, *next; 
 	int n;
+
+	head.next = list;
 
 	if (!list || !list->next)
 		return list;
@@ -20,7 +23,7 @@ Node * deleteDuplicate2(Node *list)
 			while (t && n == t->data) {
 				next = t->next;
 				if (prev == NULL) {
-					list = next;
+					head.next = next;
 				} else {
 					prev->next = next;
 				}
@@ -33,7 +36,7 @@ Node * deleteDuplicate2(Node *list)
 		t = t->next;
 	}
 
-	return list;
+	return head.next;
 }
 
 int main(int argc, char **argv)

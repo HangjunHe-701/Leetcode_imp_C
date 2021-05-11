@@ -11,7 +11,7 @@ Leetcode implementation on C
 	leetcode_0026_remove_duplicates.c
 		27, 80, 283
 	leetcode_0031_next_permutation.c
-	leetcode_0033_search_rotate.c			: binary search
+	leetcode_0033_search_rotate.c			: binary search, offer11
 		81
 	leetcode_0034_first_last_pos.c			: binary search 
 	leetcode_0035_search_inseart.c			: binary search
@@ -25,7 +25,7 @@ Leetcode implementation on C
 	leetcode_0054_spiral_order.c
 	leetcode_0056_merge_intevals.c			: quick sort
 		57
-	leetcode_0059_spiral_matrix.c
+	leetcode_0059_spiral_matrix.c			: offer29
 	leetcode_0062_unique_paths.c			: recursive, DP
 	leetcode_0063_unique_paths.c			: maze, recursive, DP
 	leetcode_0064_min_sum.c					: recursive, DP
@@ -77,13 +77,13 @@ Leetcode implementation on C
 # LINKED LIST:
 
 	leetcode_0002_add_2_nums.c
-	leetcode_list.c
+	leetcode_list.c							: loop meet remove merge
 		21, 141, 142, 203, 876
 	leetcode_0019_remove_nth_end.c
 	leetcode_0021_merge_two_link.c   
 	leetcode_0024_swap_pairs.c     
 	leetcode_0061_rotate_right.c
-	leetcode_0082_delete_duplicate2.c
+	leetcode_0082_delete_duplicate2.c		: offer18
 	leetcode_0083_delete_duplicate.c
 	leetcode_0086_list_partition.c
 	leetcode_0092_reverse_list2.c
@@ -129,7 +129,9 @@ Leetcode implementation on C
 # TREE:
 
 	leetcode_binary_tree.c:
-		094, 100, 102, 105, 106, 226
+		094, 100, 102, 105, 106
 	leetcode_0095_generate_trees.c			: not ready
 	leetcode_0096_num_trees.c
 	leetcode_0098_valid_bst.c
+	leetcode_0226_invert_tree.c				: offer27
+		101	

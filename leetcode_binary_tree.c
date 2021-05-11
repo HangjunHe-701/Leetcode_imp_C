@@ -219,40 +219,7 @@ void leetcode102_levelOrder2(btree_t * pRoot)
 }
 #endif
 
-bool leetcode100_isSameTree(btree_t * t1, btree_t * t2)
-{
-	if (t1 == NULL && t2 == NULL)
-		return true;
-	if (t1 == NULL || t2 == NULL)
-		return false;
-	
-	return ((t1->data == t2->data) && leetcode100_isSameTree(t1->pleft, t2->pleft) &&
-			leetcode100_isSameTree(t1->pright, t2->pright));
-}
 
-// Inorder
-btree_t * leetcode226_invertTree(btree_t * root)
-{
-	if (root == NULL)
-		return NULL;
-	
-	btree_t * left = leetcode226_invertTree(root->pleft);
-	btree_t * right = leetcode226_invertTree(root->pright);
-    // 交换左子树和右子树
-	root->pleft = right;
-	root->pright = left;
-	return root;
-}
-
-bool leetcode101_isSymmetric(btree_t *root)
-{
-	if (!root) return true;
-
-	leetcode226_invertTree(root->pleft);
-
-	return (leetcode100_isSameTree(root->pleft, root->pright));
-
-}
 
 #if 1
 int main ()

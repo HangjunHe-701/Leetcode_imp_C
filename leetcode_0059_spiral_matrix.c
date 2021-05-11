@@ -6,6 +6,7 @@
 
 int spDir[4][2] = {{0, 1},{1, 0},{0, -1},{-1, 0}}; 
 
+// Offer 29
 static int** spiral_matrix(int n) 
 {
 	int ** ret;
@@ -75,12 +76,53 @@ out:
 	return ret;
 }
 
+static void printfMatrixClockwisely(int **nums, int rows, int columns, int start)
+{
+	int endX = columns - 1 - start;
+	int endY = rows - 1 - start;
+	int i;
+
+	// left -> right
+	for (i = start; i <= endX; ++i) {
+		printf("%d\t", nums[start][i]);
+	}
+	// up -> down 
+	if (start < endY) {
+		for (i = start + 1; i <= endY; ++i) {
+			printf("%d\t", nums[i][endX]);
+		}
+	}
+	// left <- right
+	if (start < endX && start < endY) {
+		for (i = endX - 1; i >= start; --i) {
+			printf("%d\t", nums[endY][i]);
+		}
+	}
+	// up <- down 
+	if (start < endY - 1 && start < endX) {
+		for (i = endY - 1; i > start; --i) {
+			printf("%d\t", nums[i][start]);
+		}
+	}
+}
+void offer29_printMatrixClockwisely(int **nums, int rows, int columns)
+{
+	int start = 0;
+	if (nums == NULL || rows <= 0 || columns <= 0)
+		return;
+
+	while (rows > 2 * start && columns > 2 * start) {
+		printfMatrixClockwisely(nums, rows, columns, start);
+		start ++;
+	}
+	return;
+}
 
 int main(int argc, char **argv)
 {
 	int i, j;
 	int **ret;
-	int n = 10;
+	int n = 5;
 
 	ret = spiral_matrix(n);
 #if 1
@@ -90,6 +132,9 @@ int main(int argc, char **argv)
 		}
 		printf("\n");
 	}
+	printf("\n");
+
+	offer29_printMatrixClockwisely(ret, n, n);
 	printf("\n");
 
 	for (i = 0; i < n; i++) {
