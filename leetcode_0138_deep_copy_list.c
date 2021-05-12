@@ -9,6 +9,7 @@ typedef struct node {
 	struct node	*random;
 } randomNode;
 
+// Offer 35
 randomNode *copyRandomList(randomNode *head)
 {
     randomNode *newHead, *l1, *l2;

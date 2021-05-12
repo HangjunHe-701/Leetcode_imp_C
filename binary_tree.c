@@ -2,15 +2,13 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include "queue.h"
+#include "binary_tree.h"
 
 /**
  * BFS: breadth first search
  * DFS: depth first search
  *
  */
-
-typedef enum {false = 0, true = 1} bool;
 
 //左右根
 void postOrder_destroy(btree_t * pRoot)
@@ -21,12 +19,12 @@ void postOrder_destroy(btree_t * pRoot)
 	postOrder_destroy(pRoot->pleft); 
 	postOrder_destroy(pRoot->pright);
 	// free
-	free (pRoot);
+	delete (pRoot);
 }
 
 btree_t * newTreeNode(int data)
 {
-	btree_t *node = (btree_t*)malloc(sizeof(btree_t));
+	btree_t *node = new(btree_t);
 	if (!node) {
 		return NULL;
 	}
@@ -287,46 +285,6 @@ btree_t * GetLastCommonParent1(btree_t * pRoot,
 	}
 }
 
-void Convert(btree_t * pRoot, 
-             btree_t * pFirstNode, btree_t * pLastNode)
-{
-	btree_t *pFirstLeft, *pLastLeft, * pFirstRight, *pLastRight;
-	
-	if(pRoot == NULL) {
-		pFirstNode = NULL;
-		pLastNode = NULL;
-		return;
-	}
-
-	if(pRoot->pleft == NULL) {
-		// 如果左子树为空，对应双向有序链表的第一个节点是根节点
-		pFirstNode = pRoot;
-	} else {
-		Convert(pRoot->pleft, pFirstLeft, pLastLeft);
-		// 二叉查找树对应双向有序链表的第一个节点就是左子树转换后双向有序链表的第一个节点
-		pFirstNode = pFirstLeft;
-		// 将根节点和左子树转换后的双向有序链表的最后一个节点连接
-		pRoot->pleft = pLastLeft;
-		pLastLeft->pright = pRoot;
-	}
-
-	if(pRoot->pright == NULL)
-	{
-		// 对应双向有序链表的最后一个节点是根节点
-		pLastNode = pRoot;
-	}
-	else
-	{
-		Convert(pRoot->pright, pFirstRight, pLastRight);
-		// 对应双向有序链表的最后一个节点就是右子树转换后双向有序链表的最后一个节点
-		pLastNode = pLastRight;
-		// 将根节点和右子树转换后的双向有序链表的第一个节点连接
-		pRoot->pright = pFirstRight;
-		pFirstRight->pleft = pRoot;
-	}
-
-	return;
-}
 
 #if 0
 #if 0

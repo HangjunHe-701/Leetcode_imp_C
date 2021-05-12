@@ -88,6 +88,7 @@ Leetcode implementation on C
 	leetcode_0086_list_partition.c
 	leetcode_0092_reverse_list2.c
 	leetcode_0109_sorted_list_BST.c
+	leetcode_0138_deep_copy_list.c			: offer35
 	leetcode_0143_reorder_list.c
 	leetcode_0147_insertion_sort_list.c
 	leetcode_0148_sort_list.c
@@ -128,7 +129,7 @@ Leetcode implementation on C
 
 # TREE:
 
-	leetcode_binary_tree.c:
+	leetcode_binary_tree.cpp:				: offer07, offer32, offer36
 		094, 100, 102, 105, 106
 	leetcode_0095_generate_trees.c			: not ready
 	leetcode_0096_num_trees.c

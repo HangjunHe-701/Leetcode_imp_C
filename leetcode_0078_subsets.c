@@ -104,6 +104,7 @@ int ** subsets2(int *nums, int n)
 			}
 			tmp >>= 1;
 		}
+		// hack
 		if (k <= n - 1) ret[i][k] = ret[i][k-1];
 	}
 	return ret;
