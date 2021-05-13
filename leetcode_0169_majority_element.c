@@ -22,6 +22,7 @@
 再回顾一下这个过程，其实就是删除（抵消）了（1，2），（1，3），（1，5）剩下了一个1。除去冗余关系：实际代码中没有array，也没有result，因为我们不需要。由于前面提到array里只可能同时存储一种数字，所以我们用major来表示当前array里存储的数，count表示array的长度,即目前暂时无法删除的元素个数，最后扫描完所有的数字，array和result变成一样了，都表示“最后还是无法删除的数字”。
 */
 
+// Offer 39
 int majorityElement(int nums[], int n) 
 {
 	int majority = nums[0];

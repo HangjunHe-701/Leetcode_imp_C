@@ -18,6 +18,7 @@ static int partitionSort(interval * nums, int low, int high)
 	// max high - 1
 	for (int i = low; i < high - 1; i++) {
 
+		// compare with the last node
 		if  (nums[i].start < nums[high].start || (nums[i].start == nums[high].start && nums[i].end < nums[high].end)) {
 			memcpy(&temp, &nums[i], sizeof(interval));
 			memcpy(&nums[i], &nums[j], sizeof(interval));
@@ -38,7 +39,9 @@ static void quickSort(interval * nums, int low, int high)
 		return;
 
 	int p = partitionSort(nums, low, high);
+	// smaller than P
 	quickSort(nums, low, p-1);
+	// bigger than P
 	quickSort(nums, p+1, high);
 }
 

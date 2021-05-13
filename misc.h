@@ -14,4 +14,5 @@ typedef enum {false=0,true=1} bool;
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 extern int bubble_sort(int *nums, int n);
+extern int quick_sort(int *nums, int n);
 #endif

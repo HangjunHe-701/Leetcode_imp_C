@@ -17,7 +17,7 @@ Leetcode implementation on C
 	leetcode_0035_search_inseart.c			: binary search
 	leetcode_0039_combination_sum.c
 		40
-	leetcode_0041_first_missing_positive.c
+	leetcode_0041_first_missing_positive.cpp	:map
 	leetcode_0045_jump_game.c
 		55
 	leetcode_0048_rotate_image.c
@@ -37,6 +37,7 @@ Leetcode implementation on C
 		90
 	leetcode_0079_word_search.c				: maze, recursive
 	leetcode_0084_max_rectangle_area.c		: ?
+	leetcode_0169_majority_element.c		: offer39
 
 # Binary search: (binary_search.c)
 
@@ -111,7 +112,6 @@ Leetcode implementation on C
 		190, 191, 231, 268, 342, 389, 461, 493, 1720 
 	leetcode_0136_single_number.c
 		137, 260
-	leetcode_0169_majority_element.c
 	leetcode_0187_repeat_DNA_requence.c
 	leetcode_0201_range_bitwise_AND.c
 	leetcode_0318_max_product.c
