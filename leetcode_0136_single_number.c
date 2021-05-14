@@ -41,6 +41,7 @@ int leetcode137_singleNumberII(int nums[], int n)
 }
 
 // "x & -x" get lbs (last bit set) 
+// Offer 56
 int leetcode260_singleNumber(int nums[], int n, int *result1, int *result2) 
 {
 	int result = 0;

@@ -65,6 +65,7 @@ int binarysearchFirstEqual(int nums[], int n, int key)
 		//mid = low + (high - low) >> 1; 
 		
 		if (nums[mid] == key) { 
+			// already the first item: mid == 0
 			if (mid == 0 || nums[mid-1] != key)
 				return mid; 
 			high = mid - 1;
@@ -89,7 +90,8 @@ int binarysearchLastEqual(int nums[], int n, int key)
 		//mid = low + (high - low) >> 1; 
 
 		if (nums[mid] == key) {
-			if  (mid + 1 == n ||  nums[mid+1] != key)
+			// already the last item: mid == n - 1 
+			if  (mid == n - 1 ||  nums[mid+1] != key)
 				return mid;
 			low = mid + 1;
 		} else if (nums[mid] > key)

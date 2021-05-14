@@ -67,6 +67,7 @@ int get_node_num(btree_t * pRoot)
 	return get_node_num(pRoot->pleft) + get_node_num(pRoot->pright) + 1;
 }
 
+// Offer 55
 int get_depth(btree_t * pRoot)
 {
 	if(pRoot == NULL) // 递归出口
@@ -187,30 +188,26 @@ bool structure_cmp(btree_t * pRoot)
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))  
 
-// 左右树高不大于1
-bool IsAVL(btree_t * pRoot, int *height)
+// Offer 55, 左右树高不大于1
+bool IsAVL(btree_t * pRoot, int & height)
 {
-	if(pRoot == NULL) // 空树，返回真
-	{
-		*height = 0;
+	if (pRoot == NULL) {
+		height = 0;
 		return true;
 	}
 	
-	int heightLeft;
-	bool resultLeft = IsAVL(pRoot->pleft, &heightLeft);
-	int heightRight;
-	bool resultRight = IsAVL(pRoot->pright, &heightRight);
-	
-	if(resultLeft && resultRight && abs(heightLeft - heightRight) <= 1) // 左子树和右子树都是AVL，并且高度相差不大于1，返回真
+	int heightLeft, heightRight;
+
+	// 左子树和右子树都是AVL，并且高度相差不大于1，返回真
+	if (IsAVL(pRoot->pleft, heightLeft) &&
+		IsAVL(pRoot->pright, heightRight) &&
+		abs(heightLeft - heightRight) <= 1)
 	{
-		*height = MAX(heightLeft, heightRight) + 1;
+		height = MAX(heightLeft, heightRight) + 1;
 		return true;
 	}
-	else
-	{
-		*height = MAX(heightLeft, heightRight) + 1;
-		return false;
-	}
+	
+	return false;
 }
 
 // Pre: root->left->right 

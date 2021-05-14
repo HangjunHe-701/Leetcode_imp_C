@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <iostream>
+#include <climits>
+using namespace std;
 
 int divideTwoIntegars(int dividend, int divisor)
 {
@@ -21,6 +24,7 @@ int divideTwoIntegars(int dividend, int divisor)
 	while (dvd >= dvs) {
 		int temp = dvs;
 		int m = 1;
+		// pow 2
 		while (temp<<1 <= dvd) {
 			temp <<= 1;
 			m <<= 1;
@@ -36,6 +40,7 @@ int main(int argc, char **argv)
 	//int dividend=18, divisor=3;
 	int dividend=-2147483648, divisor=-1;
 
+	cout << INT_MAX << ' ' << 0x7fffffff << endl;
 	int ret = divideTwoIntegars(dividend, divisor);
 	printf ("%d / %d = %d\n", dividend, divisor, ret);
 }

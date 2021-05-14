@@ -3,7 +3,7 @@ Leetcode implementation on C
 
 # ARRAY:
 
-	leetcode_0001_two_sum.c
+	leetcode_0001_two_sum.c					: offer57, map
 	leetcode_0011_max_area.c
 	leetcode_0015_three_sum.c
 	leetcode_0016_three_sum_closest.c
@@ -39,8 +39,8 @@ Leetcode implementation on C
 	leetcode_0084_max_rectangle_area.c		: ?
 	leetcode_0169_majority_element.c		: offer39
 
-# Binary search: (binary_search.c)
-
+# Binary search:
+	binary_search.c							: basic functions
 	leetcode_0029_divide_2_integar.c 
 
 # STRING:
@@ -109,9 +109,9 @@ Leetcode implementation on C
 
 # BITOPS:
 
-	leecode_bitops.c
+	leetcode_bitops.c
 		190, 191, 231, 268, 342, 389, 461, 493, 1720 
-	leetcode_0136_single_number.c
+	leetcode_0136_single_number.c			: offer56
 		137, 260
 	leetcode_0187_repeat_DNA_requence.c
 	leetcode_0201_range_bitwise_AND.c
@@ -130,6 +130,7 @@ Leetcode implementation on C
 
 # TREE:
 
+	binary_tree.c							: offer55
 	leetcode_binary_tree.cpp:				: offer07, offer32, offer36
 		094, 100, 102, 105, 106
 	leetcode_0095_generate_trees.c			: not ready
