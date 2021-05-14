@@ -11,6 +11,7 @@ dp[i] = nums[i] + dp[i-1] (dp[i-1] > 0)，
 dp[i] = nums[i] (dp[i-1] ≤ 0)。
 */
 
+// Offer 42
 static int maxSubArray(int nums[], int n)
 {
 	int *dp;

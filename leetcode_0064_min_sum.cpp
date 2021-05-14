@@ -2,7 +2,10 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "misc.h" 
+#include <algorithm>
+#include <iostream>
+
+using namespace std;
 
 static int array[][3] = {
   1,3,1,
@@ -18,7 +21,7 @@ static void getUniquePaths(int x, int y, int m, int n, int count, int *ret)
 		// add the last node
 		count += array[x][y];
 		if (*ret)
-			*ret = MIN((*ret), (count));
+			*ret = min((*ret), (count));
 		else 
 			*ret = count;
 		return;
@@ -28,7 +31,7 @@ static void getUniquePaths(int x, int y, int m, int n, int count, int *ret)
 	getUniquePaths(x, y+1, m, n, count + array[x][y], ret);
 }
 
-static int uniquePaths(int m, int n) 
+static int uniquePathsRecur(int m, int n) 
 {
 	int ret = 0;
 
@@ -36,15 +39,16 @@ static int uniquePaths(int m, int n)
 	return ret;
 }
 
-static int uniquePaths2(int m, int n) 
+// better, not modify the original array
+static int uniquePaths(int m, int n) 
 {
 	int sum;
 	int ** dp;
 	int i, j;
 
-	dp = malloc(sizeof(int *) *m);
+	dp = new int*[m];
 	for (i = 0; i < m; i++) {
-		dp[i] = malloc(sizeof(int) * n); 
+		dp[i] = new int[n]; 
 	}
 
 	// known dps!!! 
@@ -65,20 +69,20 @@ static int uniquePaths2(int m, int n)
 
 	for (i = 1; i < m; i++) {
 		for (j = 1; j < n; j++) {
-			dp[i][j] = MIN(dp[i-1][j], dp[i][j-1]) + array[i][j]; 
+			dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + array[i][j]; 
 		}
 	}
 	sum = dp[m-1][n-1];
 
 	for (i = 0; i < m; i++) {
-		free(dp[i]); 
+		delete[] (dp[i]); 
 	}
-	free(dp);
+	delete[] dp;
 
 	return sum;
 }
 
-static int uniquePaths3(int m, int n) 
+static int uniquePaths2(int m, int n) 
 {
 	int sum;
 	int i, j;
@@ -94,12 +98,44 @@ static int uniquePaths3(int m, int n)
 
 	for (i = 1; i < m; i++) {
 		for (j = 1; j < n; j++) {
-			array[i][j] += MIN(array[i-1][j], array[i][j-1]); 
+			array[i][j] += min(array[i-1][j], array[i][j-1]); 
 		}
 	}
 	sum = array[m-1][n-1];
 
 	return sum;
+}
+
+// wrong
+int offer47_getMaxValue(int rows, int cols)
+{
+    if(array == nullptr || rows <= 0 || cols <= 0)
+        return 0;             
+
+    int* maxValues = new int[cols];
+    for(int i = 0; i < rows; ++i)  
+    {  
+        for(int j = 0; j < cols; ++j)  
+        {
+            int left = 0;     
+            int up = 0;
+
+            if(i > 0)
+                up = maxValues[j];             
+
+            if(j > 0)
+                left = maxValues[j - 1];       
+
+            //maxValues[j] = std::max(left, up) + array[i][j];
+            maxValues[j] = std::min(left, up) + array[i][j];
+        }
+    }
+
+    int maxValue = maxValues[cols - 1];
+
+    delete[] maxValues;
+
+    return maxValue;
 }
 
 int main(int argc, char **argv)
@@ -109,7 +145,9 @@ int main(int argc, char **argv)
 
 	ret = uniquePaths(m, n);
 	printf("minimal sum %d\n", ret);
-	printf("minimal sum %d\n", uniquePaths2(m, n));
-	printf("minimal sum %d\n", uniquePaths3(m, n));
+	printf("minimal sum %d\n", uniquePathsRecur(m, n));
+	//printf("minimal sum %d\n", uniquePaths2(m, n));
+	printf("offer47 minimal sum %d\n", offer47_getMaxValue(m, n));
+
 	return 0;
 }

@@ -18,17 +18,17 @@ Leetcode implementation on C
 	leetcode_0039_combination_sum.c
 		40
 	leetcode_0041_first_missing_positive.cpp	:map
-	leetcode_0045_jump_game.c
+	leetcode_0045_jump_game.c				: greed
 		55
 	leetcode_0048_rotate_image.c
-	leetcode_0053_max_sub_array.c
+	leetcode_0053_max_sub_array.c			: offer42, DP
 	leetcode_0054_spiral_order.c
 	leetcode_0056_merge_intevals.c			: quick sort
 		57
 	leetcode_0059_spiral_matrix.c			: offer29
 	leetcode_0062_unique_paths.c			: recursive, DP
 	leetcode_0063_unique_paths.c			: maze, recursive, DP
-	leetcode_0064_min_sum.c					: recursive, DP
+	leetcode_0064_min_sum.c					: offer47, recursive, DP
 	leetcode_0066_plus_one.c
 	leetcode_0073_set_zeroes.c
 	leetcode_0074_search_matrix.c			: binary search
@@ -45,7 +45,7 @@ Leetcode implementation on C
 
 # STRING:
 
-	leetcode_0003_longest_sub_str.c
+	leetcode_0003_longest_sub_str.c			: offer48, move window
 	leetcode_0005_longest_palindromic.c
 		125, 647
 	leetcode_0006_zigzag_convert.c
@@ -59,8 +59,8 @@ Leetcode implementation on C
 	leetcode_0043_multiply.c
 	leetcode_0067_add_binary.c
 	leetcode_0071_simply_path.c				: stack
-	leetcode_0076_min_window.c
-	leetcode_0091_num_Decodings.c
+	leetcode_0076_min_window.c				: move window
+	leetcode_0091_num_Decodings.c			: DP, offer46
 	leetcode_0093_restore_ip_addr.c			: recursive
 	leetcode_0151_reverse_words.c
 		557
@@ -93,6 +93,7 @@ Leetcode implementation on C
 	leetcode_0143_reorder_list.c
 	leetcode_0147_insertion_sort_list.c
 	leetcode_0148_sort_list.c
+	leetcode_0160_insertion_node.c			: offer52
 	leetcode_0234_is_palindrome.c
 	leetcode_0237_delete_node.c
 	leetcode_0328_odd_even_list.c

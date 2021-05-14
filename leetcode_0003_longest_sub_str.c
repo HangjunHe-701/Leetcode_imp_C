@@ -15,23 +15,23 @@ int lengthOfLongestSubString(char* s, int * start)
 	int left = 0, right = 0;
 	int len = strlen(s);
 	int longest = 0;
-    int map[256];
+    char usedChar[256];
 
     if (len == 0) return 0;
 
-    memset(map, 0, sizeof(int) * 256);
+    memset(usedChar, 0, sizeof(char) * 256);
 
 	while (left < len - 1 && right < len - 1) {
 
-        if (map[s[right]] == 0) {
-            map[s[right]] ++;
+        if (usedChar[s[right]] == 0) {
+            usedChar[s[right]] ++;
             right ++;
             if (right - left > longest) {
                 longest = right - left;
 				*start = left; 
 			}
         } else {
-            map[s[left]] --;
+            usedChar[s[left]] --;
             left ++;
         }
 	}

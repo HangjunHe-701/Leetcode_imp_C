@@ -15,14 +15,12 @@ int* leetcode438_findAnagrams(char* s, char* t, int *n)
 	int len = strlen(s);
 	int lenT = strlen(t);
 	int count = 0;
-    int mapS[256];
     int mapT[256];
 	int start = 0;
 	int * ret = NULL;
 
     if (len == 0) return 0;
 
-    memset(mapS, 0, sizeof(int) * 256);
     memset(mapT, 0, sizeof(int) * 256);
 	for (int i = 0; i < lenT; i++) {
 		mapT[t[i]]++;	
@@ -33,40 +31,31 @@ int* leetcode438_findAnagrams(char* s, char* t, int *n)
 	//failure not handled
 	memset(ret, 0, sizeof(int)*len);
 
-	while (left < len - 1 && right < len -1) {
+	while (right < len) {
 
-		mapS[s[right]] ++;
-
-		if (mapS[s[right]] > mapT[s[right]]) {
-			if (mapT[s[right]] == 0) {
-				while (left <= right) {
-					mapS[s[left]] --;
-					if (mapT[s[left]])
-						count --;
-					left ++;
-				}
-			} else {
-				// add right remove left, no count update
-				mapS[s[left]] --;
-				left ++;
-			}
+		if (mapT[s[right]] > 0) {
+			count++;	
 		}
-		else {
-			count++;
-			if ((count == lenT)) {
-				ret[start] = left;
-				*n = ++start;
+		mapT[s[right]]--; 
 
-				// left move forward
-				mapS[s[left]] --;
-				left ++;
+		if (count == lenT) {
+			ret[start] = left;
+			start++;
+		}
+		if (right - left == lenT - 1) {
+			// move left
+			if (mapT[s[left]] >= 0) {
 				count --;
 			}
+
+			mapT[s[left]]++; 
+			left++;
 		}
 
-		right ++;
+		right++;
 	}
 
+	*n = start;
 	return ret;
 }
 
@@ -86,7 +75,7 @@ bool leetcode567_checkInclusion(char* s, char* t)
 		mapS[t[i]]++;	
 	}
 
-	while (left < len - 1 && right < len -1) {
+	while (right < len) {
 
 		if (mapS[s[right]] >= 1) {
 			count--;
@@ -99,7 +88,7 @@ bool leetcode567_checkInclusion(char* s, char* t)
 
 		right ++;
 
-		if (right - left == lenT) {
+		if (right - left == lenT - 1) {
 			mapS[s[left]] --;
 			if (mapS[s[left]] >= 1)
 				count++;
@@ -113,8 +102,10 @@ bool leetcode567_checkInclusion(char* s, char* t)
 
 int main(int argc, char **argv)
 {
-    char array[] = "cbaebabacd";
-    char t[] = "abc";
+    //char array[] = "cbaebabacd";
+    //char t[] = "abc";
+    char array[] = "abab";
+    char t[] = "ab";
 	int i = 0;
 	int n = 0;
 
