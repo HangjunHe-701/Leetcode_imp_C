@@ -49,7 +49,7 @@ Leetcode implementation on C
 	leetcode_0005_longest_palindromic.c
 		125, 647
 	leetcode_0006_zigzag_convert.c
-	leetcode_0008_myatoi.c
+	leetcode_0008_myatoi.c					: offer67
 	leetcode_0012_int_roman.c
 	leetcode_0013_roman_int.c
 	leetcode_0017_letter_combinations.c		: recursive
@@ -62,7 +62,7 @@ Leetcode implementation on C
 	leetcode_0076_min_window.c				: move window
 	leetcode_0091_num_Decodings.c			: DP, offer46
 	leetcode_0093_restore_ip_addr.c			: recursive
-	leetcode_0151_reverse_words.c
+	leetcode_0151_reverse_words.c			: offer58
 		557
 	leetcode_0227_basic_calculator.c
 	leetcode_0306_is_additive_number.c		: fibonacci
@@ -97,7 +97,7 @@ Leetcode implementation on C
 	leetcode_0234_is_palindrome.c
 	leetcode_0237_delete_node.c
 	leetcode_0328_odd_even_list.c
-	leetcode_0445_add_2_nums2.c				: recursive
+	leetcode_0445_add_2_nums2.c				: recursive, DFS
 	leetcode_0725_split_pairs.c
 	leetcode_0739_daily_temperatures.c
 		503, 496, 1019 
@@ -117,7 +117,7 @@ Leetcode implementation on C
 	leetcode_0201_range_bitwise_AND.c
 	leetcode_0318_max_product.c
 	leetcode_0338_count_bits.c
-	leetcode_0371_get_sum.c					: recursive
+	leetcode_0371_get_sum.c					: recursive, offer65
 	leetcode_0393_valid_UTF8.c
 	leetcode_0397_integar_replace.c
 	leetcode_0401_binary_watch.c			: not ready

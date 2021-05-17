@@ -6,7 +6,7 @@
 #include "single_list.h"
 
 
-// recursive
+// DFS: recursive, p1 longer than p2
 static Node* addNode(Node *p1, Node *p2, int offset)
 {
 	Node *p, *next;
@@ -33,7 +33,7 @@ static Node* addNode(Node *p1, Node *p2, int offset)
 	return p;
 }
 
-static Node newHead;
+static Node newHead; // Need be global variable, or will return local variable address
 Node* addTwoNumbers(Node *head1, Node *head2)
 {
 	Node *p;
@@ -59,53 +59,6 @@ Node* addTwoNumbers(Node *head1, Node *head2)
 	return newHead.next;
 }
 
-// wrong
-Node* addTwoNumbers2(Node *head1, Node *head2)
-{
-	Node *q, *p = NULL, *prev;
-	int len1, len2, offset = 0;
-
-	if (head1 == NULL) return head2;
-	if (head2 == NULL) return head1;
-
-	len1 = get_list_length(head1);
-	len2 = get_list_length(head2);
-
-	if (len1 > len2) {
-		p = head1;
-		q = head2;
-		offset = len1 - len2;
-	} else {
-		p = head2;
-		q = head1;
-		offset = len2 - len1;
-	}
-	
-	newHead.data = 0;
-	newHead.next = p;	
-	prev = &newHead;
-	while (offset--) {
-		prev = p;
-		p = p->next;	
-	}
-	while (p) {
-		p->data += q->data;
-		if (p->data > 9) {
-			//overflow??
-			prev->data++;
-			p->data %= 10;
-		}
-		prev = p;
-		p = p->next;
-		q = q->next;
-	}
-	
-	if (newHead.data == 1)
-		return &newHead;
-	return newHead.next;
-}
-
-
 int main(int argc, char **argv)
 {
     Node *l1, *l2, *ret;
@@ -114,8 +67,11 @@ int main(int argc, char **argv)
     l2 = CreateList(6);
     ShowList(l1);
     ShowList(l2);
+
 	ret = addTwoNumbers(l1, l2);
     ShowList(ret);
-	//free_list(ret);	
+
+	free_list(ret);	
+	free_list(l1);	
 	free_list(l2);	
 }

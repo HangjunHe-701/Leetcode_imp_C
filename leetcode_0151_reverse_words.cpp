@@ -12,6 +12,7 @@
 	Thus, a return value of size or more means that the output was truncated. 
  */
 
+// Leetcode 151: need extra space
 char * reverseWords(char* s)
 {
 	int len = strlen(s);
@@ -47,17 +48,50 @@ char * reverseWords(char* s)
 	return buf;
 }
 
-static void reverseString(char *s) 
+static void reverseString(char *begin, char *end) 
 {
-	int i = 0, j = strlen(s) - 1;
 	char ch;
-printf("%s\n", s);
-	while (j > i) {
-		ch = s[i];
-	    s[i] = s[j];	
-		s[j] = ch;
-		j--; i++;
+
+	while (end > begin) {
+		ch = *end;
+	    *end = *begin;	
+		*begin = ch;
+		end--; begin++;
 	}
+}
+
+static void reverseString2(char *s) 
+{
+	reverseString(s, s + strlen(s) - 1);
+}
+
+// Offer 58
+void leetcode151_reverseWords(char* s)
+{
+	int len = strlen(s);
+	char * begin, *end;
+
+	// reverse the sentence
+	reverseString(s, s + len - 1);
+
+	begin = s;
+	end = s;
+	while (*end != '\0') {
+		
+		if (*begin == ' ') {
+			begin++;
+			end++;
+		} else if (*end == ' ') {
+			// reverse
+			reverseString(begin, end-1);
+			begin = end;
+		} else {
+			end++;
+		}
+
+	}
+	// the last string
+	reverseString(begin, end-1);
 }
 
 char * leetcode557_reverseWords(char* s)
@@ -70,13 +104,11 @@ char * leetcode557_reverseWords(char* s)
 		q = strchr(p, ' ');
 		// the last word
 		if (q == NULL) {
-			reverseString(p);
+			reverseString2(p);
 			return s;
 		}
 
-		*q = '\0';
-		reverseString(p);
-		*q = ' ';
+		reverseString(p, q-1);
 
 		p = q + 1;
 	}
@@ -86,14 +118,14 @@ char * leetcode557_reverseWords(char* s)
 
 int main(int argc, char **argv)
 {
-    char array[] = " man    man, a   plan,  a canal: Panama ";
-    //char array[] = "race a car";
-	char * buf;
+    //char array[] = " man    man, a   plan,  a canal: Panama ";
+    char array[] = "race a car";
 
-	buf = reverseWords(array);
-    printf("The \"%s\" reverse to \"%s\"\n", array, buf);
-    printf("The \"%s\" reverse to \"%s\"\n", buf, leetcode557_reverseWords(buf));
-	free (buf);
+    printf("The \"%s\" reverse to \n", array);
+
+	leetcode151_reverseWords(array);
+    printf("\"%s\"\n", array);
+    printf("reverse to \"%s\"\n", leetcode557_reverseWords(array));
 }
 
 

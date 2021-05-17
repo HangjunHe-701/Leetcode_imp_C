@@ -11,15 +11,16 @@
     在二进制中，只有 1 和 1 加在一起才会进位，0 和 0，0 和 1，1 和 0，这三种情况都不会进位，规律就是 a & b 为 0 的时候就不用进位，为 1 的时候代表需要进位。
 	进位是往前进一位，所以还需要左移操作，所以加上的进位为 (a&b)<<1。
 */
+// Offer 65
 int getSum(int n, int m)
 {
-	int sum = n ^ m, carry = n & m;
+	int sum = n ^ m, carry = (n & m) << 1;
 	int temp;
 
 	while (carry) {
 		temp = sum;
-		sum ^= carry << 1;
-		carry = temp & (carry << 1);
+		sum ^= carry;
+		carry = (temp & carry) << 1;
 	}
 
 	return sum;	

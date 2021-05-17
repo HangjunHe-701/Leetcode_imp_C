@@ -26,15 +26,20 @@ Node * add_two_numbers(Node *l1, Node *l2)
 		// malloc failure not handle yet
 		nl->data = (d1 + d2) % 10 + carry;
 		nl->next = NULL;
-		if (head.next == NULL) head.next = nl;
-		else current->next  = nl;
+	
+		if (head.next == NULL) {
+			head.next = nl;
+		} else {
+			current->next  = nl;
+		}
 
 		carry = (d1 + d2 + carry) / 10;
 		current = nl; 
+
 		if (l1) l1 = l1->next;
 		if (l2) l2 = l2->next;
 	}
-
+	// the last node
 	if  (carry) {
 		nl = malloc (sizeof (Node));
 		// malloc failure not handle yet
@@ -48,12 +53,6 @@ Node * add_two_numbers(Node *l1, Node *l2)
 
 int main(int argc, char **argv)
 {
-    //char array[] = "/a//b////c/d//././/..";
-    //char array[] = "/a/../../b/../c//.//";
-    //char array[] = "/a/./b/../../c/";
-    //char array[] = "/foo//";
-	//char array[] = "/a/./b/../../c/";
-	char array[] = "/home//foo/";
     Node *l1, *l2, *ret;
  
     l1 = CreateList(9);
