@@ -16,6 +16,7 @@ bool leetcode100_isSameTree(btree_t * t1, btree_t * t2)
 			leetcode100_isSameTree(t1->pright, t2->pright));
 }
 
+// Post Order
 btree_t * leetcode226_invertTree(btree_t * root)
 {
 	if (root == NULL)
@@ -23,13 +24,14 @@ btree_t * leetcode226_invertTree(btree_t * root)
 	
 	btree_t * left = leetcode226_invertTree(root->pleft);
 	btree_t * right = leetcode226_invertTree(root->pright);
+
     // 交换左子树和右子树
 	root->pleft = right;
 	root->pright = left;
 	return root;
 }
 
-// Offer 27
+// Offer 27, Pre Order
 void offer27_invertTree(btree_t * root)
 {
 	btree_t *temp;

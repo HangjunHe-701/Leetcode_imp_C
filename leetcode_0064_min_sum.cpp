@@ -20,20 +20,18 @@ static void getUniquePaths(int x, int y, int m, int n, int count, int *ret)
 	if (x == m - 1 && y == n - 1) {
 		// add the last node
 		count += array[x][y];
-		if (*ret)
-			*ret = min((*ret), (count));
-		else 
-			*ret = count;
+		*ret = min((*ret), (count));
 		return;
 	}
-
+	// right
 	getUniquePaths(x+1, y, m, n, count + array[x][y], ret);
+	// Down
 	getUniquePaths(x, y+1, m, n, count + array[x][y], ret);
 }
 
 static int uniquePathsRecur(int m, int n) 
 {
-	int ret = 0;
+	int ret = array[0][0];
 
 	getUniquePaths(0, 0, m, n, 0, &ret);
 	return ret;

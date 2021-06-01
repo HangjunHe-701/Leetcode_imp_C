@@ -32,33 +32,6 @@ char *my_itoa(int n, char *s)
 	return s;
 }
 
-// 关键每次的和乘10实现10的指数
-long my_atol(char *ptr)
-{
-	char *p;
-	int neg = 0;
-	int n = 0, i;
-
-	if (ptr == NULL) return 0;
-	
-	p = ptr;
-
-	if (*p == '-') {
-		neg = 1;
-		p++;
-	}
-	
-	while (*p <= '9' && *p >= '0') {
-		n = n * 10 + (*p - '0');
-		p ++;
-	}
-
-	if (neg) n = -n;
-	
-	return n;
-}
-
-
 char * my_strstr(char *s1, char *s2)
 {
 	bool flag = true;
@@ -112,34 +85,6 @@ char *my_strcpy(char *d, char *s)
     return tmp;
 }
 
-// Wrong: doesn't return the longest substring
-char * common_string2(char *longstr, char *shortstr)
-{
-	int shortlen = strlen (shortstr);
-	char *strbuf;
-	
-	if (my_strstr(longstr, shortstr) != NULL) {
-		return shortstr;
-	}
-
-	strbuf = (char*)malloc(shortlen);
-	
-	for (int i = shortlen - 1; i > 0; i --) {
-
-		for (int j = 0; j <= shortlen - i; j ++) {
-			
-			memcpy(strbuf, shortstr+j, i);
-			strbuf[i] = '\0';
-
-			if (my_strstr(longstr, strbuf) != NULL) {
-				return strbuf;
-			}
-		}
-	}
-
-	return NULL;
-}
-
 /*
 算法思路：
 
@@ -153,7 +98,7 @@ char * common_string(char *str1, char *str2)
 	int s1_len = strlen(str1);
 	int s2_len = strlen(str2);
 	int record[s1_len][s2_len];
-	char *strbuf = (char*)malloc(s1_len + 1);
+	char *strbuf;
 	
 	for (int i = 0; i < s1_len; ++i) {
 		
@@ -177,12 +122,14 @@ char * common_string(char *str1, char *str2)
 		}	
 	}
 
+	strbuf = (char*)malloc(s1_len + 1);
 	memcpy(strbuf, str1 + maxEnd - maxLen + 1, maxLen);
 	strbuf[maxLen] = '\0';
 	return strbuf;
 }
 
-char * common_string3(char *str1,char *str2)
+// No extra space needed
+char * common_string2(char *str1,char *str2)
 {
 	int len1 = strlen(str1);
 	int len2 = strlen(str2);
@@ -365,8 +312,6 @@ int main ()
 
 	printf ("\n A- a = %d hello %c\n", 'A' - 'a', my_toupper('a'));
 
-	printf ("\nmy_atol = %d %d %d", my_atol("1235"), my_atol("-1236"), atol("hello"));
-
 	printf ("\nmy_strstr = %s", my_strstr("123hello77", "hello")); 
 
 	char buffer[10];
@@ -374,7 +319,8 @@ int main ()
 
 
 	char input_str[] = "11123hello77";
-	printf ("\ncommon_string = %s", common_string3(input_str, "a23hello"));
+	printf ("\ncommon_string = %s", common_string(input_str, "a23hello"));
+	printf ("\ncommon_string2 = %s", common_string2(input_str, "a23hello"));
 	printf ("\nexchange= %s", exchange(input_str));
 	printf ("\nlength_of_a_char_string %s = %d\n", input_str, length_of_a_char_string(input_str));
 
