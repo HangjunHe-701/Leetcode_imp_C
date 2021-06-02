@@ -7,14 +7,16 @@
 
 static void getUniquePaths(int x, int y, int m, int n, int *count)
 {
-	if (x >= m || y >= n) return;
+	//if (x >= m || y >= n) return;
 
 	if (x == m - 1 && y == n - 1) {
 		(*count) ++;
 		return;
 	}
-	getUniquePaths(x+1, y, m, n, count);
-	getUniquePaths(x, y+1, m, n, count);
+	if (x < m - 1)
+		getUniquePaths(x+1, y, m, n, count);
+	if (y < n - 1)
+		getUniquePaths(x, y+1, m, n, count);
 }
 
 static int uniquePaths(int m, int n) 
@@ -62,7 +64,7 @@ int main(int argc, char **argv)
 	int m = 3, n = 3;
 
 	ret = uniquePaths(m, n);
-	printf("uniquePaths %d\n", ret);
-	printf("uniquePaths %d\n", uniquePaths2(m, n));
+	printf("Recur uniquePaths %d\n", ret);
+	printf("DP uniquePaths %d\n", uniquePaths2(m, n));
 	return 0;
 }

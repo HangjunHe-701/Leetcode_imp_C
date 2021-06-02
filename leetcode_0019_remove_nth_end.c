@@ -14,9 +14,11 @@ Node * removeNthFromEnd(Node *list, int n)
 	
 	current = list;
 	end = list;
-	while (n-- > 0) {
+	while (n-- > 0 && end) {
 		end = end->next;
 	}
+	if (n > 0) return NULL;
+
 	while (end) {
 		prev = current;
 		current = current->next;

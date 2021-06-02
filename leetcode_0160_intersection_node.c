@@ -9,11 +9,13 @@
  * if a & b have different len, then we will stop the loop after second iteration
  * for the end of first iteration, we just reset the pointer to the head of another linkedlist
  */
-Node * insertionNode(Node *head1, Node *head2)
+// Offer 52 
+Node * intersectionNode(Node *head1, Node *head2)
 {
 	Node *p = head1, *p2 = head2;
 
 	while (p != p2) {
+		// no intersection
 		if (!p && !p2)	
 			return NULL;
 
@@ -39,7 +41,7 @@ int main(int argc, char **argv)
     l2 = CreateList(9);
     ShowList(l1);
     ShowList(l2);
-	ret = insertionNode(l1, l2);
+	ret = intersectionNode(l1, l2);
 	printf("The insertionNode is %d\n", ret? ret->data: -1);
 	free_list(l1);	
 	free_list(l2);	

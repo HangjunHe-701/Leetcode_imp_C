@@ -19,7 +19,8 @@ int* leetcode0001_twoSum(int* nums, int numSize, int target)
 		
 		temp = target - nums[i];
 		it = map1.find(temp);
-		if (it != map1.end() && temp == (*it).first) {
+		//if (it != map1.end() && temp == (*it).first) {
+		if (it != map1.end()) {
 			/* hit */
 			solution = (int *)malloc(sizeof(int) * 2);
 			
@@ -72,7 +73,7 @@ int main(int argc, char **argv)
     int* result = offer57_twoSum(array2, (int)n2, target2);
     if (NULL != result)
     {
-        printf("The index1: %d; the index2: %d\n", result[0], result[1]);
+        printf("Offer 57 The index1: %d; the index2: %d\n", result[0], result[1]);
         printf("values are %d and %d.\n", array[result[0]], array[result[1]]);
         free(result);//memory deallocation
     }else
@@ -83,7 +84,7 @@ int main(int argc, char **argv)
     result = leetcode0001_twoSum(array, (int)n, target);
     if (NULL != result)
     {
-        printf("The index1: %d; the index2: %d\n", result[0], result[1]);
+        printf("Leetcode 0001 The index1: %d; the index2: %d\n", result[0], result[1]);
         printf("values are %d and %d.\n", array[result[0]], array[result[1]]);
         free(result);//memory deallocation
     }else

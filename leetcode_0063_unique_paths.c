@@ -106,7 +106,7 @@ int m2[3][3] = {
 #endif
 static void getUniquePaths(int x, int m, int y, int n, int *ret_count)
 {
-	if (x > m || y > n) return;
+	//if (x > m || y > n) return;
 
 	if (x == m -1 && y == n - 1) {
 		(*ret_count) ++;
@@ -191,8 +191,8 @@ int main()
 	printf("\nm2:\n");
 	show_path(m2);
 	int len = 10;
-	printf("\nunique paths of m2 is %d\n", uniquePaths(len, len));
-	printf("\nunique paths of m2 is %d\n", uniquePaths2(len, len));
+	printf("\nRecur: unique paths of m2 is %d\n", uniquePaths(len, len));
+	printf("\nDP: unique paths of m2 is %d\n", uniquePaths2(len, len));
     return 0;
 }
 

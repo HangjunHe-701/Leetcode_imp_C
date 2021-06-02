@@ -57,7 +57,8 @@ int leetcode260_singleNumber(int nums[], int n, int *result1, int *result2)
 		else
 			*result2 ^= nums[i];
 	}
-	return result;
+
+	return 0;
 }
 
 int main(int argc, char **argv)

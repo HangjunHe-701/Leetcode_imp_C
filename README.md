@@ -78,7 +78,7 @@ Leetcode implementation on C
 # LINKED LIST:
 
 	leetcode_0002_add_2_nums.c
-	leetcode_list.c							: loop meet remove merge
+	leetcode_list.c							: loop meet remove merge Offer21 Offer23
 		21, 141, 142, 203, 876
 	leetcode_0019_remove_nth_end.c
 	leetcode_0021_merge_two_link.c   
@@ -93,7 +93,7 @@ Leetcode implementation on C
 	leetcode_0143_reorder_list.c
 	leetcode_0147_insertion_sort_list.c
 	leetcode_0148_sort_list.c
-	leetcode_0160_insertion_node.c			: offer52
+	leetcode_0160_intersection_node.c		: offer52
 	leetcode_0234_is_palindrome.c
 	leetcode_0237_delete_node.c
 	leetcode_0328_odd_even_list.c

@@ -1,27 +1,27 @@
 #include <stdio.h>
 
-int partition(int *nums, int start, int end)
+static int partition(int *nums, int start, int end)
 {
-	int small = start - 1;
+	int small = start;
 	int tmp;
 
 	for (int i = start; i < end; ++i) {
 		if (nums[i] < nums[end]) {
-			++small;
 			if (small != i) {
 				tmp = nums[i];
 				nums[i] = nums[small];
 				nums[small] = nums[i];
 			}
+			++small;
 		}
 	}
 	// swap end
-	small++;
 	tmp = nums[end];
 	nums[end] = nums[small];
 	nums[small] = nums[end];
 	return small;
 }
+
 static void quickSort(int *nums, int start, int end)
 { 
 	int index;

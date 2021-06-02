@@ -6,7 +6,7 @@
 #include "single_list.h"
 
 
-Node * partition(Node *list, int n)
+Node * listPartition(Node *list, int n)
 {
 	Node *t = list, *nt, *nt2, *head = NULL, *head2 = NULL; 
 
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
  
     l1 = CreateList(10);
     ShowList(l1);
-	ret =  partition(l1, 50);
+	ret = listPartition(l1, 50);
 	ShowList(ret);
 	free_list(ret);	
 }
